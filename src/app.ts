@@ -16,7 +16,7 @@ const httpServer = createServer(app);
 
 const io = new Server(httpServer, {
   cors: {
-    origin: "https://gotravel-server.onrender.com",
+    origin: "https://go-travel-blush.vercel.app",
     credentials: true,
   },
 });
