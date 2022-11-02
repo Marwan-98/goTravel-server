@@ -6,6 +6,7 @@ const EVENTS = {
     CREATE_ROOM: "CREATE_ROOM",
     SEND_ROOM_MESSAGE: "SEND_ROOM_MESSAGE",
     JOIN_ROOM: "JOIN_ROOM",
+    LEAVE_ROOM: "LEAVE_ROOM",
   },
   SERVER: {
     ROOMS: "ROOMS",
@@ -38,9 +39,12 @@ function socket({ io }: { io: Server }) {
     );
 
     socket.on(EVENTS.CLIENT.JOIN_ROOM, (roomId) => {
-      console.log(roomId);
       socket.join(roomId);
       socket.emit(EVENTS.SERVER.JOINED_ROOM, roomId);
+    });
+
+    socket.on(EVENTS.CLIENT.LEAVE_ROOM, (roomId) => {
+      socket.leave(roomId);
     });
   });
 }
