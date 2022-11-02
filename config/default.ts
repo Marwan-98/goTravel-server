@@ -1,5 +1,7 @@
+import * as dotenv from "dotenv";
+dotenv.config();
+
 export default {
-  corsOrigin: "http://localhost:3000",
+  corsOrigin: process.env.CORS_ORIGIN,
   port: process.env.PORT,
-  host: "localhost",
 };
