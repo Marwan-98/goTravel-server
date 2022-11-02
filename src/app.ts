@@ -21,7 +21,7 @@ const io = new Server(httpServer, {
   },
 });
 
-app.get("/", (req, res) => res.send("Server is up..."));
+app.get("/", (req, res) => res.sendStatus(200));
 
 httpServer.listen(port, host, () => {
   console.log(`Server is listening`);

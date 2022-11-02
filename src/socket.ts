@@ -18,15 +18,10 @@ const rooms: Record<number, { name: string }> = {};
 
 function socket({ io }: { io: Server }) {
   io.on("connection", (socket: Socket) => {
-    console.log(`User Connected: ${socket.id}`);
-
     socket.on(EVENTS.CLIENT.CREATE_ROOM, ({ roomName, roomId }) => {
-      console.log(roomName);
-
       rooms[roomId] = {
         name: roomName,
       };
-
       socket.emit(EVENTS.SERVER.ROOMS, rooms);
     });
 
